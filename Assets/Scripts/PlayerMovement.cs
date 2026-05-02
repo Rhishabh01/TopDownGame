@@ -19,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerrb.linearVelocity = Moveinput * MoveSpeed;
+        //Applies Force locally not for the world
+        playerrb.AddRelativeForce(Vector2.up * Moveinput * MoveSpeed,ForceMode2D.Force);
+        
         if (!Wallhit)
         {
             MoveSpeed = 12;
@@ -28,12 +30,20 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveSpeed = 5;
         }
-        
+        if (Keyboard.current.aKey.isPressed)
+        {
+            playerrb.AddTorque(2f); // rotates left
+        }
+        else if(Keyboard.current.dKey.isPressed)
+        {
+            playerrb.AddTorque(-2f); //rotates right
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        Moveinput = context.ReadValue<Vector2>();
+        // Takes input (WASD and converts into 1and -1 depedning upon input)
+        Moveinput = context.ReadValue<Vector2>();   
     }
 
     
