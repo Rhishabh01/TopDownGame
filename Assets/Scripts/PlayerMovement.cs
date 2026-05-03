@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 Moveinput;
     private bool Wallhit;
     float speedX, speedY;
+    [SerializeField] private ParticleSystem SpeedParticles;
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             playerrb.AddTorque(2f); // rotates left
+            
         }
         else if(Keyboard.current.dKey.isPressed)
         {
