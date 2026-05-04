@@ -9,11 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 Moveinput;
     private bool Wallhit;
     float speedX, speedY;
+    private float time;
+    private float Finaltime;
+    private float cooltime; 
     [SerializeField] private int health;
     [SerializeField] private ParticleSystem SpeedParticles;
     void Start()
     {
-        health = 3;
+        health = 380;
         SpeedParticles.Play();
         Application.targetFrameRate = 60;
         playerrb = GetComponent<Rigidbody2D>();
@@ -23,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        time += Time.deltaTime;
+
         //Applies Force locally not for the world
         if(health > 0)
         {
@@ -32,13 +37,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 playerrb.AddRelativeForce(Vector2.up * Moveinput * MoveSpeed, ForceMode2D.Force);
                 MoveSpeed = 12;
+
+
+                if (Moveinput.x < 0)
+                {
+                    playerrb.AddTorque(2f); // rotates left
+
+                }
+                else if (Moveinput.x > 0)
+                {
+                    playerrb.AddTorque(-2f); //rotates right
+                }
             }
             else
             {
-                Wallhit = false;
-                MoveSpeed = 5;
-                playerrb.AddRelativeForce(Moveinput * 5 , ForceMode2D.Impulse);
-                health--;
+                WallHit();
+                
             }
             if (Moveinput.y > 0)
             {
@@ -49,28 +63,18 @@ public class PlayerMovement : MonoBehaviour
                 Particles(SpeedParticles, false);
             }
 
-            if (Moveinput.x < 0)
-            {
-                playerrb.AddTorque(2f); // rotates left
-
-            }
-            else if (Moveinput.x > 0)
-            {
-                playerrb.AddTorque(-2f); //rotates right
-            }
         }
         else
         {
             Particles(SpeedParticles, false);
             Debug.Log("Game Over");
         }
-
         
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        // Takes input (WASD and converts into 1and -1 depedning upon input)
+        // Takes input (WASD and converts into 1 and -1 depending upon input)
         Moveinput = context.ReadValue<Vector2>();   
     }
 
@@ -80,25 +84,37 @@ public class PlayerMovement : MonoBehaviour
         emissionModule.enabled = enabled;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       
+    private void WallHit()
+    { 
+        MoveSpeed = 5;
+        
+        cooltime += Time.deltaTime;
+        Debug.Log(time);
+        if (cooltime > 1.5f)
+        {
+            health--;
+            Wallhit = false;
+            cooltime = 0;
+        }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Wall>())
         {
             Wallhit = true;
+            
         }
     }
+    
 
-
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Wall>())
         { 
             Wallhit = false;
+            Finaltime = time;
+            Debug.Log("You reached in "+Finaltime);
         }
     }
 }
