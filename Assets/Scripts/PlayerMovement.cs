@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem SpeedParticles;
     void Start()
     {
+        SpeedParticles.Play();
         Application.targetFrameRate = 60;
         playerrb = GetComponent<Rigidbody2D>();
         Wallhit = false;
@@ -31,12 +32,21 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveSpeed = 5;
         }
-        if (Keyboard.current.aKey.isPressed)
+        if(Moveinput.y > 0)
+        {
+            Particles(SpeedParticles, true);
+        }
+        else
+        {
+            Particles(SpeedParticles, false);
+        }
+
+        if (Moveinput.x < 0)
         {
             playerrb.AddTorque(2f); // rotates left
-            
+
         }
-        else if(Keyboard.current.dKey.isPressed)
+        else if (Moveinput.x > 0)
         {
             playerrb.AddTorque(-2f); //rotates right
         }
@@ -48,7 +58,11 @@ public class PlayerMovement : MonoBehaviour
         Moveinput = context.ReadValue<Vector2>();   
     }
 
-    
+    private void Particles(ParticleSystem particle, bool enabled)
+    {
+        ParticleSystem.EmissionModule emissionModule = particle.emission;
+        emissionModule.enabled = enabled;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
