@@ -34,7 +34,7 @@ public class GameManagerScript : MonoBehaviour
             Finaltime = (int)time;
         }
 
-        if(time > 15)
+        if(time > 15 && Completed == false)
         {
             TimeFail = true;
             player.TimeFail = TimeFail;

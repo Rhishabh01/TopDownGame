@@ -107,14 +107,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        
+
+        if (collision.gameObject.GetComponent<Key>())
+        {
+
             keys = collision.gameObject.GetComponent<Key>();
             KeyValue = keys.KeyValue;
+        }
+
 
         
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
