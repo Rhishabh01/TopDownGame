@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class GameManagerScript : MonoBehaviour
             TimeFail = true;
             player.TimeFail = TimeFail;
             Debug.Log("Time Failed");
+        }
+
+        if(player.Completed == true)
+        {
+            // we get the next scene 
         }
     }
  
