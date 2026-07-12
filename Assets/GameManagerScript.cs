@@ -8,17 +8,20 @@ public class GameManagerScript : MonoBehaviour
     private float time;
     private int Finaltime;
     private bool HasLogged;
-    [SerializeField] private GameObject PlayerObj;
+    private bool TimeFail;
+    private PlayerMovement player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = FindAnyObjectByType<PlayerMovement>();
         HasLogged = false;
+        TimeFail = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Completed == true && HasLogged == false)
+        if (Completed == true && HasLogged == false && TimeFail == false)
         {
             Debug.Log("your final time " + Finaltime + "here ");
             HasLogged = true;
@@ -30,7 +33,12 @@ public class GameManagerScript : MonoBehaviour
             Finaltime = (int)time;
         }
 
-
+        if(time > 15)
+        {
+            TimeFail = true;
+            player.TimeFail = TimeFail;
+            Debug.Log("Time Failed");
+        }
     }
  
 }

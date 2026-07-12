@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 Moveinput;
     public bool Wallhit;
     private float cooltime;
+    public bool TimeFail;
     public bool Completed;
     [SerializeField] private int health;
     [SerializeField] private ParticleSystem SpeedParticles;
@@ -26,11 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        
+    { 
 
         //Applies Force locally not for the world
-        if(health > 0 && Completed == false)
+        if(health > 0 && Completed == false && TimeFail == false)
         {
         
             if (!Wallhit)
