@@ -7,17 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private Rigidbody2D playerrb;
     [SerializeField] private float MoveSpeed;
     private Vector2 Moveinput;
-    private float time;
-    private int Finaltime;
     public bool Wallhit;
-    private bool StartTime = true;
     private float cooltime;
-    private bool Finished;
-    private bool Completed = false;
+    public bool Completed;
     [SerializeField] private int health;
     [SerializeField] private ParticleSystem SpeedParticles;
-    public bool KeyCollected;
-    public int KeyValue;
    
     public int currkeyval;
     void Start()
@@ -51,17 +45,9 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Particles(SpeedParticles, false);
-            Debug.Log("Game Over");
         }
-        if(StartTime == true)
-        {
-            time += Time.deltaTime;
-            
-        }
-        if(Finished == true && Completed == false)
-        {
-            FinalTimeDisplay();
-        }
+        
+        
     
     }
 
@@ -96,12 +82,7 @@ public class PlayerMovement : MonoBehaviour
         // Takes input (WASD and converts into 1 and -1 depending upon input)
         Moveinput = context.ReadValue<Vector2>();   
     }
-    private void FinalTimeDisplay()
-    {
-        Finaltime = (int)time;
-        Debug.Log("your final time " + Finaltime + "here ");
-        Completed = true;
-    }
+  
     private void Particles(ParticleSystem particle, bool enabled)
     {
         ParticleSystem.EmissionModule emissionModule = particle.emission;
@@ -110,10 +91,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallHit()
     { 
-        MoveSpeed = 5;
+        
         Particles(SpeedParticles, false);
         cooltime += Time.deltaTime;
-        if (cooltime > 1.5f)
+        if (cooltime > 1.2f)
         {
             health--;
             Wallhit = false;
@@ -124,17 +105,7 @@ public class PlayerMovement : MonoBehaviour
     
     
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.GetComponent<Wall>())
-        { 
-            Finished = true;
-            StartTime = false;
-        }
-
-        
-
-    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Wall>())
