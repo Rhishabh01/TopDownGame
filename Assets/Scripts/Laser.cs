@@ -10,19 +10,23 @@ public class Laser : MonoBehaviour
     [SerializeField] public ParticleSystem laserparticles;
     [SerializeField] public BoxCollider2D boxCollider2D;
     [SerializeField] public int LaserVal;
-  
+    private PlayerMovement player;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        player = FindAnyObjectByType<PlayerMovement>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+       if(player.KeyValue == LaserVal)
+        {
+            DisableLaser();
+        }
                
     }
    public void DisableLaser()

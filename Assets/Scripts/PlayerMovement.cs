@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public bool Completed;
     [SerializeField] private int health;
     [SerializeField] private ParticleSystem SpeedParticles;
-   
+    public int KeyValue;
+    private Key keys;
     public int currkeyval;
     void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         SpeedParticles.Play();
         Application.targetFrameRate = 60;
         playerrb = GetComponent<Rigidbody2D>();
-      
+        
     }
 
     // Update is called once per frame
@@ -101,11 +102,19 @@ public class PlayerMovement : MonoBehaviour
             cooltime = 0;
         }
     }
-    
-    
-    
 
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Key>())
+        {
+            keys = collision.gameObject.GetComponent<Key>();
+            KeyValue = keys.KeyValue;
+
+        }
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Wall>())
