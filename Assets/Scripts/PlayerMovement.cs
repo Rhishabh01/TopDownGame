@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem SpeedParticles;
     public int KeyValue;
     private Key keys;
+    
     public int currkeyval;
     void Start()
     {
@@ -106,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Key>())
-        {
+        
+        
             keys = collision.gameObject.GetComponent<Key>();
             KeyValue = keys.KeyValue;
 
-        }
+        
     }
 
 
