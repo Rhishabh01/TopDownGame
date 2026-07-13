@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float cooltime;
     public bool TimeFail;
     public bool Completed;
-    [SerializeField] private int health;
+    [SerializeField] public int health;
     [SerializeField] private ParticleSystem SpeedParticles;
     public int KeyValue;
     private Key keys;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
       
-        health = 380;
+        health = 3;
         SpeedParticles.Play();
         Application.targetFrameRate = 60;
         playerrb = GetComponent<Rigidbody2D>();
@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            
             Particles(SpeedParticles, false);
         }
         

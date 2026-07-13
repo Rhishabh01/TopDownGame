@@ -4,7 +4,7 @@ public class Key : MonoBehaviour
 {
     [SerializeField] public int KeyValue;
     [SerializeField] public GameObject KeyToDisableLaser;
-    private BoxCollider2D KeyToDisableLaser2;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

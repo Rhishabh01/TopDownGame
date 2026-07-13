@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,26 +12,39 @@ public class GameManagerScript : MonoBehaviour
     private int Finaltime;
     private bool HasLogged;
     private bool TimeFail;
-    private PlayerMovement player;
+    private PlayerMovement Player;
+    private string TextString;
+    [SerializeField] private TextMeshProUGUI GameOverText;
+    [SerializeField] private TextMeshProUGUI DisplayTime;
+    [SerializeField] private TextMeshProUGUI DisplayLifes;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
+       
+        Player = FindAnyObjectByType<PlayerMovement>();
         HasLogged = false;
         TimeFail = false;
+        DisplayTime.gameObject.SetActive(true);
+        GameOverText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        DisplayLifes.text = $"Health {Player.health.ToString()} ";
+
         if (Completed == true && HasLogged == false && TimeFail == false)
         {
             Debug.Log("your final time " + Finaltime + "here ");
             HasLogged = true;
+            TextString = "Mission Complete";
+            GameOverText.text = TextString;
+            GameOverText.gameObject.SetActive(true);
         }
-        else 
+        if(TimeFail == false && Completed == false)
         {
-            
+            DisplayTime.text = $"Time Taken {Finaltime.ToString()} ";
             time += Time.deltaTime;
             Finaltime = (int)time;
         }
@@ -37,11 +52,13 @@ public class GameManagerScript : MonoBehaviour
         if(time > 15 && Completed == false)
         {
             TimeFail = true;
-            player.TimeFail = TimeFail;
-            Debug.Log("Time Failed");
+            Player.TimeFail = TimeFail;
+            TextString = "Mission Failed";
+            GameOverText.text = TextString;
+            GameOverText.gameObject.SetActive(true);
         }
 
-        if(player.Completed == true)
+        if(Player.Completed == true)
         {
             // we get the next scene 
         }
