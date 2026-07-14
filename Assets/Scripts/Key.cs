@@ -24,7 +24,7 @@ public class Key : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMovement>())
         { 
             Destroy(gameObject);
-            Debug.Log(KeyValue);
+            
                 
         }
 

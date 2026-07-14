@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             {
             ForceRemoval = playerrb.linearVelocity ;
             playerrb.linearVelocity -= ForceRemoval;
-            Debug.Log(ForceRemoval);
+      
             Particles(SpeedParticles, false);
             }
         }

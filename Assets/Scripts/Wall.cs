@@ -6,7 +6,7 @@ public class Wall : MonoBehaviour
     public bool Completed;
     private PlayerMovement player;
     private GameManagerScript GManager;
-    private float TransitionSpeed = 1.3f;
+   [SerializeField] private float TransitionSpeed = 1.5f;
     
     private Quaternion rotate = Quaternion.Euler(0,0,-180f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,7 +43,7 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
-            Debug.Log("reached");
+            
             FinalTimeDisplay();
             
         }

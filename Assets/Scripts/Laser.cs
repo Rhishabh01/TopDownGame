@@ -11,16 +11,18 @@ public class Laser : MonoBehaviour
     [SerializeField] private GameObject LaserBox;
     [SerializeField] public BoxCollider2D boxCollider2D;
     [SerializeField] private SpriteRenderer LaserRender;
-    private float TransitionSpeed = 2f;
+    [SerializeField] private float TransitionSpeed = 2f;
     [SerializeField] public int LaserVal;
+    [SerializeField] private Vector3 LaserSize;
     private PlayerMovement player;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindAnyObjectByType<PlayerMovement>();
         
+        player = FindAnyObjectByType<PlayerMovement>();
+        LaserBox.gameObject.transform.localScale = LaserSize;
     }
 
     // Update is called once per frame
@@ -50,7 +52,7 @@ public class Laser : MonoBehaviour
         {
             int strin = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(strin);
-            Debug.Log("hit");
+          
         }
 
       

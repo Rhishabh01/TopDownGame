@@ -36,9 +36,9 @@ public class GameManagerScript : MonoBehaviour
 
         if (Completed == true && HasLogged == false && TimeFail == false)
         {
-            Debug.Log("your final time " + Finaltime + "here ");
+            
             HasLogged = true;
-            TextString = "Mission Complete";
+            TextString = "Mission Complete " + "\n Time Taken " + Finaltime ; 
             GameOverText.text = TextString;
             GameOverText.gameObject.SetActive(true);
         }
