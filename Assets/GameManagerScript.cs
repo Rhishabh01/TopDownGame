@@ -21,7 +21,8 @@ public class GameManagerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        Application.targetFrameRate = 120;
+
         Player = FindAnyObjectByType<PlayerMovement>();
         HasLogged = false;
         TimeFail = false;

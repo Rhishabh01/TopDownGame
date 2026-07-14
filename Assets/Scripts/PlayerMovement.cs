@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private float cooltime;
     public bool TimeFail;
     public bool Completed;
-  
     private bool RemovedVelocity;
     [SerializeField] public int health;
     [SerializeField] private ParticleSystem SpeedParticles;
@@ -25,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         RemovedVelocity = false;
         health = 3;
         SpeedParticles.Play();
-        Application.targetFrameRate = 60;
         playerrb = GetComponent<Rigidbody2D>();
         
     }

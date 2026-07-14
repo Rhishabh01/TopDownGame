@@ -55,7 +55,8 @@ public class Laser : MonoBehaviour
    private void DisableLaser()
     {
         Color c = LaserRender.color;
-        c.a = Mathf.Lerp(c.a, 0, Time.deltaTime * TransitionSpeed );
+        float t =+ Time.deltaTime * TransitionSpeed;
+        c.a = Mathf.Lerp(c.a, 0, t );
         LaserRender.color = c;
         boxCollider2D.enabled = false;
         Collected = true;
