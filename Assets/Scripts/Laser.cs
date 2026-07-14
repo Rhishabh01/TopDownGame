@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private GameObject LaserBox;
     [SerializeField] public BoxCollider2D boxCollider2D;
     [SerializeField] private SpriteRenderer LaserRender;
-
+    private float TransitionSpeed = 2f;
     [SerializeField] public int LaserVal;
     private PlayerMovement player;
 
@@ -32,15 +32,15 @@ public class Laser : MonoBehaviour
         }
 
        
-            Color c = LaserRender.color;
-             c.a = Mathf.PingPong(1, 1f);
-            LaserRender.color = c;
+            
                 
                
     }
    public void DisableLaser()
     {
-        LaserBox.SetActive(false);
+        Color c = LaserRender.color;
+        c.a = Mathf.Lerp(c.a, 0, Time.deltaTime * TransitionSpeed);
+        LaserRender.color = c;
         boxCollider2D.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
