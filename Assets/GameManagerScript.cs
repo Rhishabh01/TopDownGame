@@ -58,9 +58,12 @@ public class GameManagerScript : MonoBehaviour
             GameOverText.gameObject.SetActive(true);
         }
 
-        if(Player.Completed == true)
+        if(Player.health <= 0)
         {
-            // we get the next scene 
+           
+            TextString = "Mission Failed";
+            GameOverText.text = TextString;
+            GameOverText.gameObject.SetActive(true);
         }
     }
  

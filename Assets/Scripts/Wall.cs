@@ -6,8 +6,8 @@ public class Wall : MonoBehaviour
     public bool Completed;
     private PlayerMovement player;
     private GameManagerScript GManager;
-    private float TransitionSpeed = 1.2f;
-    private Vector3 NewPos;
+    private float TransitionSpeed = 1.3f;
+    
     private Quaternion rotate = Quaternion.Euler(0,0,-180f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

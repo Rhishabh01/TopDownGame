@@ -11,15 +11,16 @@ public class PlayerMovement : MonoBehaviour
     private float cooltime;
     public bool TimeFail;
     public bool Completed;
+    private bool RemovedVelocity;
     [SerializeField] public int health;
     [SerializeField] private ParticleSystem SpeedParticles;
     public int KeyValue;
     private Key keys;
-    
+    private Vector2 ForceRemoval;
     public int currkeyval;
     void Start()
     {
-      
+        RemovedVelocity = false;
         health = 3;
         SpeedParticles.Play();
         Application.targetFrameRate = 60;
@@ -29,25 +30,31 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    { 
+    {
 
         //Applies Force locally not for the world
-        if(health > 0 && Completed == false && TimeFail == false)
+        if (health > 0 && Completed == false && TimeFail == false)
         {
-        
-            if (!Wallhit)
+
+            if (Wallhit)
             {
-                Movement();
+                WallHit();
+                
             }
             else
             {
-                WallHit();  
+                Movement();
             }
         }
         else
         {
-            
+            if (RemovedVelocity == false)
+            {
+            ForceRemoval = playerrb.linearVelocity ;
+            playerrb.linearVelocity -= ForceRemoval;
+            Debug.Log(ForceRemoval);
             Particles(SpeedParticles, false);
+            }
         }
         
         
