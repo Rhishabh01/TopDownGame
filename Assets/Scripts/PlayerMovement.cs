@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float cooltime;
     public bool TimeFail;
     public bool Completed;
+  
     private bool RemovedVelocity;
     [SerializeField] public int health;
     [SerializeField] private ParticleSystem SpeedParticles;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public int currkeyval;
     void Start()
     {
+        
         RemovedVelocity = false;
         health = 3;
         SpeedParticles.Play();
@@ -118,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.GetComponent<Key>())
         {
-
+           
             keys = collision.gameObject.GetComponent<Key>();
             KeyValue = keys.KeyValue;
         }
