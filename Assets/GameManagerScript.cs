@@ -17,11 +17,11 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GameOverText;
     [SerializeField] private TextMeshProUGUI DisplayTime;
     [SerializeField] private TextMeshProUGUI DisplayLifes;
-
+    [SerializeField] private int FPS;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Application.targetFrameRate = 120;
+        Application.targetFrameRate = FPS;
 
         Player = FindAnyObjectByType<PlayerMovement>();
         HasLogged = false;
