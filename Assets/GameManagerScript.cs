@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
 
-    
+   // private bool AnimCompleted;
+
     public bool Completed;
     private float time;
     private int Finaltime;
-    private bool HasLogged;
+    
     private bool TimeFail;
     private PlayerMovement Player;
     private string TextString;
+    [SerializeField] private Wall LandingPad;
     [SerializeField] private TextMeshProUGUI GameOverText;
     [SerializeField] private TextMeshProUGUI DisplayTime;
     [SerializeField] private TextMeshProUGUI DisplayLifes;
@@ -22,9 +24,9 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = FPS;
-
+        
         Player = FindAnyObjectByType<PlayerMovement>();
-        HasLogged = false;
+        
         TimeFail = false;
         DisplayTime.gameObject.SetActive(true);
         GameOverText.gameObject.SetActive(false);
@@ -35,22 +37,29 @@ public class GameManagerScript : MonoBehaviour
     {
         DisplayLifes.text = $"Health {Player.health.ToString()} ";
 
-        if (Completed == true && HasLogged == false && TimeFail == false)
+        if (Completed == true  && TimeFail == false)
         {
             
-            HasLogged = true;
-            TextString = "Mission Complete " + "\n Time Taken " + Finaltime ; 
-            GameOverText.text = TextString;
-            GameOverText.gameObject.SetActive(true);
+            
+            if(LandingPad.AnimCompleted == true)
+            {
+                TextString = "Mission Complete " + "\n Time Taken " + Finaltime;
+                GameOverText.text = TextString;
+                GameOverText.gameObject.SetActive(true);
+            }
+           
         }
         if(TimeFail == false && Completed == false)
         {
-            DisplayTime.text = $"Time Taken {Finaltime.ToString()} ";
-            time += Time.deltaTime;
-            Finaltime = (int)time;
+            
+                DisplayTime.text = $"Time Taken {Finaltime.ToString()} ";
+                time += Time.deltaTime;
+                Finaltime = (int)time;
+                
+            
         }
 
-        if(time > 15 && Completed == false)
+        if(time >= 15 && Completed == false)
         {
             TimeFail = true;
             Player.TimeFail = TimeFail;
