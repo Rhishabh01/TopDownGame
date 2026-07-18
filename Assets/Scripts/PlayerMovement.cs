@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         health = 3;
         SpeedParticles.Play();
         playerrb = GetComponent<Rigidbody2D>();
-        
+        MoveSpeed = 12;
     }
 
     // Update is called once per frame
@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Movement();
             }
+            
         }
         else
         {
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         playerrb.AddRelativeForce(Vector2.up * Moveinput * MoveSpeed, ForceMode2D.Force);
-        MoveSpeed = 12;
+       
 
         if (Moveinput.x < 0)
         {
@@ -111,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             cooltime = 0;
         }
     }
+   
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -122,9 +124,13 @@ public class PlayerMovement : MonoBehaviour
             keys = collision.gameObject.GetComponent<Key>();
             KeyValue = keys.KeyValue;
         }
+        if (collision.gameObject.GetComponent<DamageOrb>())
+        {
+            health--;
+           
+        }
 
 
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
