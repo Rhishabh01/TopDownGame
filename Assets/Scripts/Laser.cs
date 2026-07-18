@@ -23,7 +23,7 @@ public class Laser : MonoBehaviour
     {
         Collected = false;
         player = FindAnyObjectByType<PlayerMovement>();
-        LaserBox.gameObject.transform.localScale = LaserSize;
+        
     }
 
     // Update is called once per frame
@@ -41,9 +41,9 @@ public class Laser : MonoBehaviour
         {
 
             float t = Mathf.PingPong(Time.time * 5f, 1f);
-            Color cc = LaserRender.color;
-            cc = Color.Lerp(Color2, Color1, t);
-            LaserRender.color = cc;
+            Color ColorLaser = LaserRender.color;
+            ColorLaser = Color.Lerp(Color2, Color1, t);
+            LaserRender.color = ColorLaser;
         }
         
        
@@ -54,10 +54,10 @@ public class Laser : MonoBehaviour
  
    private void DisableLaser()
     {
-        Color c = LaserRender.color;
-        float t =+ Time.deltaTime * TransitionSpeed;
-        c.a = Mathf.Lerp(c.a, 0, t );
-        LaserRender.color = c;
+        Color AlphaVal = LaserRender.color;
+        float Transistion =+ Time.deltaTime * TransitionSpeed;
+        AlphaVal.a = Mathf.Lerp(AlphaVal.a, 0, Transistion );
+        LaserRender.color = AlphaVal;
         boxCollider2D.enabled = false;
         Collected = true;
        

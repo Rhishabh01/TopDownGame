@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
     private bool DisplayDone;
     private PlayerMovement player;
     private GameManagerScript GManager;
-   [SerializeField] private float TransitionSpeed;
+    [SerializeField] private float TransitionSpeed;
     [SerializeField] private ParticleSystem ExplosionParticles;
     private Quaternion rotate = Quaternion.Euler(0,0,-180f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +23,7 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Completed == true)
+        if(Completed == true && AnimCompleted == false)
         {
             Vector3 LandingPadpos = gameObject.transform.position;
 
