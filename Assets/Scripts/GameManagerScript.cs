@@ -11,7 +11,6 @@ public class GameManagerScript : MonoBehaviour
     public bool Completed;
     private float time;
     private int Finaltime;
-    
     private bool TimeFail;
     private PlayerMovement Player;
     private string TextString;
@@ -24,9 +23,7 @@ public class GameManagerScript : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = FPS;
-        
         Player = FindAnyObjectByType<PlayerMovement>();
-        
         TimeFail = false;
         DisplayTime.gameObject.SetActive(true);
         GameOverText.gameObject.SetActive(false);
@@ -47,7 +44,7 @@ public class GameManagerScript : MonoBehaviour
                 GameOverText.text = TextString;
                 GameOverText.gameObject.SetActive(true);
             }
-           
+            
         }
         if(TimeFail == false && Completed == false)
         {

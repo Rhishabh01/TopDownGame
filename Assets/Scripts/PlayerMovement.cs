@@ -107,7 +107,10 @@ public class PlayerMovement : MonoBehaviour
         cooltime += Time.deltaTime;
         if (cooltime > 1.2f)
         {
-            health--;
+            if (health > 0)
+            {
+                health--;
+            }
             Wallhit = false;
             cooltime = 0;
         }
@@ -126,8 +129,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<DamageOrb>())
         {
-            health--;
-           
+            if (health > 0)
+            {
+                health--;
+            }
+
+
         }
 
 
