@@ -19,6 +19,7 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DisplayTime;
     [SerializeField] private TextMeshProUGUI DisplayLifes;
     [SerializeField] private int FPS;
+    [SerializeField] private GameObject CompletedLevelUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,7 +68,7 @@ public class GameManagerScript : MonoBehaviour
 
         if(Completed == true && LandingPad.AnimCompleted == true)
         {
-
+            CompletedLevelUI.SetActive(true);
         }
 
         if(Player.health <= 0)

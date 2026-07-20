@@ -7,7 +7,8 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField] GameObject HideButton2;
     [SerializeField] GameObject HideButton3;
     [SerializeField] GameObject BackButton;
-   
+    private int LevelToMove;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,5 +51,19 @@ public class ButtonsScript : MonoBehaviour
         HideButton2.SetActive(false);
         HideButton3.SetActive(false);
         BackButton.SetActive(true);
+    }
+
+    public void NextLevel()
+    {
+        if (LevelToMove < 5)
+        {
+        LevelToMove = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(LevelToMove + 1);
+
+        }
+        if(LevelToMove > 5)
+        {
+            SceneManager.LoadScene(0);  
+        }
     }
 }
