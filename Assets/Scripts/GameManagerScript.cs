@@ -65,6 +65,11 @@ public class GameManagerScript : MonoBehaviour
             GameOverText.gameObject.SetActive(true);
         }
 
+        if(Completed == true && LandingPad.AnimCompleted == true)
+        {
+
+        }
+
         if(Player.health <= 0)
         {
            

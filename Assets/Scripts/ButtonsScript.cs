@@ -11,7 +11,6 @@ public class ButtonsScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        BackButton.SetActive(false);
     }
     
     // Update is called once per frame
@@ -28,11 +27,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void StartGame()
     {
-        HideButton1.SetActive(false);
-        HideButton2.SetActive(false);
-        HideButton3.SetActive(false);
-        BackButton.SetActive(false);
-        SceneManager.LoadScene(1);
+         SceneManager.LoadScene(1);
     }
     public void Settings()
     {
@@ -46,7 +41,7 @@ public class ButtonsScript : MonoBehaviour
         HideButton1.SetActive(true);
         HideButton2.SetActive(true);
         HideButton3.SetActive(true);
-        BackButton.SetActive(false);
+        BackButton.SetActive(true);
     }
     public void SelectLevel()
     {

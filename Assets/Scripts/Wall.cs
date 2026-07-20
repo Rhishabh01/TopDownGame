@@ -5,8 +5,8 @@ public class Wall : MonoBehaviour
     public bool AnimCompleted;
     public bool Completed;
     private bool DisplayDone;
-    private PlayerMovement player;
-    private GameManagerScript GManager;
+    [SerializeField] private PlayerMovement player;
+    [SerializeField] private GameManagerScript GManager;
     [SerializeField] private float TransitionSpeed;
     [SerializeField] private ParticleSystem ExplosionParticles;
     private Quaternion rotate = Quaternion.Euler(0,0,-180f);
@@ -14,8 +14,7 @@ public class Wall : MonoBehaviour
     void Start()
     {
         Completed = false;
-        GManager = FindAnyObjectByType<GameManagerScript>();
-        player = FindAnyObjectByType<PlayerMovement>();
+       
         player.Completed = Completed;
 
     }

@@ -14,7 +14,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private float TransitionSpeed = 5f;
     [SerializeField] public int LaserVal;
     [SerializeField] private Vector3 LaserSize;
-    private PlayerMovement player;
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private Color Color1;
     [SerializeField] private Color Color2;
     [SerializeField] private bool Collected;
@@ -22,7 +22,7 @@ public class Laser : MonoBehaviour
     void Start()
     {
         Collected = false;
-        player = FindAnyObjectByType<PlayerMovement>();
+        
         
     }
 
