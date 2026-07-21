@@ -14978,6 +14978,8 @@ MonoBehaviour:
   Wallhit: 0
   TimeFail: 0
   Completed: 0
+  InputGiven: 0
+  PlayerVisual: {fileID: 1575574745}
   health: 0
   SpeedParticles: {fileID: 1422990910}
   KeyValue: 0

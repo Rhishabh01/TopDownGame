@@ -14,6 +14,7 @@ public class GameManagerScript : MonoBehaviour
     private bool TimeFail;
     private PlayerMovement Player;
     private string TextString;
+    private bool InputGiven;
     [SerializeField] private Wall LandingPad;
     [SerializeField] private TextMeshProUGUI GameOverText;
     [SerializeField] private TextMeshProUGUI DisplayTime;
@@ -47,7 +48,7 @@ public class GameManagerScript : MonoBehaviour
             }
             
         }
-        if(TimeFail == false && Completed == false)
+        if(TimeFail == false && Completed == false && Player.InputGiven == true)
         {
             
                 DisplayTime.text = $"Time Taken {Finaltime.ToString()} ";
@@ -78,6 +79,9 @@ public class GameManagerScript : MonoBehaviour
             GameOverText.text = TextString;
             GameOverText.gameObject.SetActive(true);
         }
+        
+        
+
     }
  
 }

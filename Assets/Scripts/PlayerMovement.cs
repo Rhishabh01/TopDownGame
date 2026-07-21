@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public bool TimeFail;
     public bool Completed;
     private bool RemovedVelocity;
+    public bool InputGiven;
     [SerializeField] public int health;
     [SerializeField] private ParticleSystem SpeedParticles;
     public int KeyValue;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public int currkeyval;
     void Start()
     {
-        
+        InputGiven = false;
         RemovedVelocity = false;
         health = 3;
         SpeedParticles.Play();
@@ -65,12 +66,11 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         playerrb.AddRelativeForce(Vector2.up * Moveinput * MoveSpeed, ForceMode2D.Force);
-       
+
 
         if (Moveinput.x < 0)
         {
             playerrb.AddTorque(2f); // rotates left
-
         }
         else if (Moveinput.x > 0)
         {
@@ -80,10 +80,11 @@ public class PlayerMovement : MonoBehaviour
         if (Moveinput.y > 0)
         {
             Particles(SpeedParticles, true);
-
+            InputGiven = true;
         }
         else
         {
+
             Particles(SpeedParticles, false);
         }
     }
@@ -132,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
             if (health > 0)
             {
                 health--;
+            
             }
 
 

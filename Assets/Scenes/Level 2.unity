@@ -6109,7 +6109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270665950642637438, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.46
+      value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 4270665950642637438, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6141,18 +6141,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270665950642637438, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
-      propertyPath: EndPos
-      value: -1.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
-      propertyPath: StartPos
-      value: 4.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
-      propertyPath: XaxisMovement
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14682,11 +14670,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: EndPos
-      value: -8.48
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: StartPos
-      value: -3.45
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 5794157155829690805, guid: c98464891a946aa4f8ffedc14a6ccb0c, type: 3}
       propertyPath: XaxisMovement
@@ -14824,6 +14812,7 @@ MonoBehaviour:
   Wallhit: 0
   TimeFail: 0
   Completed: 0
+  InputGiven: 0
   health: 0
   SpeedParticles: {fileID: 1422990910}
   KeyValue: 0
