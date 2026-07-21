@@ -175,6 +175,8 @@ MonoBehaviour:
   HideButton2: {fileID: 0}
   HideButton3: {fileID: 0}
   BackButton: {fileID: 0}
+  LevelSelect: {fileID: 0}
+  LevelToLoad: 0
 --- !u!114 &98390340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8465,6 +8467,8 @@ MonoBehaviour:
   HideButton2: {fileID: 0}
   HideButton3: {fileID: 0}
   BackButton: {fileID: 0}
+  LevelSelect: {fileID: 0}
+  LevelToLoad: 0
 --- !u!1 &1422990907
 GameObject:
   m_ObjectHideFlags: 0
@@ -14809,6 +14813,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerrb: {fileID: 1940372040}
   MoveSpeed: 12
+  DroneRender: {fileID: 1575574745}
+  Color1: {r: 1, g: 1, b: 1, a: 1}
+  Color2: {r: 0.8490566, g: 0, b: 0, a: 1}
   Wallhit: 0
   TimeFail: 0
   Completed: 0
