@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]private Rigidbody2D playerrb;
     [SerializeField] private float MoveSpeed;
+    [SerializeField] private SpriteRenderer DroneRender;
+    [SerializeField] private Color Color1;
+    [SerializeField] private Color Color2;
     private Vector2 Moveinput;
     public bool Wallhit;
     private float cooltime;
@@ -18,9 +22,11 @@ public class PlayerMovement : MonoBehaviour
     public int KeyValue;
     private Key keys;
     private Vector2 ForceRemoval;
+    private bool HitisTrue;
     public int currkeyval;
     void Start()
     {
+        cooltime = 0f;
         InputGiven = false;
         RemovedVelocity = false;
         health = 3;
@@ -39,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Wallhit)
             {
-                WallHit();
-                
+                WallHit();    
             }
             else
             {
@@ -58,8 +63,11 @@ public class PlayerMovement : MonoBehaviour
             Particles(SpeedParticles, false);
             }
         }
-        
-        
+
+        if (HitisTrue)
+        {
+            HitResponse();
+        }
     
     }
 
@@ -106,6 +114,10 @@ public class PlayerMovement : MonoBehaviour
         
         Particles(SpeedParticles, false);
         cooltime += Time.deltaTime;
+
+
+
+
         if (cooltime > 1.2f)
         {
             if (health > 0)
@@ -116,8 +128,21 @@ public class PlayerMovement : MonoBehaviour
             cooltime = 0;
         }
     }
-   
-
+    
+    private void HitResponse()
+    {
+      cooltime += Time.deltaTime;  
+      Color colordrone = DroneRender.color;
+      float t = Mathf.PingPong(Time.time * 5f , 1f);
+      colordrone = Color.Lerp(Color2, Color1, t);
+      DroneRender.color = colordrone;
+        if(cooltime > 1f)
+        {
+            HitisTrue = false;
+            DroneRender.color = Color1;
+            cooltime = 0f;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -133,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
             if (health > 0)
             {
                 health--;
-            
+                HitisTrue = true;
             }
 
 
