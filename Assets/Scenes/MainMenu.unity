@@ -217,11 +217,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 747323483}
+  m_TargetGraphic: {fileID: 151287511}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747323481}
+      - m_Target: {fileID: 151287509}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -512,7 +512,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 747323481}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
-        m_MethodName: LoadLevel
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -924,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747323480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1428,11 +1428,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 747323483}
+  m_TargetGraphic: {fileID: 1042204993}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747323481}
+      - m_Target: {fileID: 1042204991}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -1825,11 +1825,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 747323483}
+  m_TargetGraphic: {fileID: 1157434756}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747323481}
+      - m_Target: {fileID: 1157434754}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -1959,11 +1959,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 747323483}
+  m_TargetGraphic: {fileID: 1235338364}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 747323481}
+      - m_Target: {fileID: 1235338366}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
