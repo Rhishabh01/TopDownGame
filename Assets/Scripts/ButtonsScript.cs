@@ -9,11 +9,11 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField] GameObject BackButton;
     [SerializeField] GameObject LevelSelect;
     private int LevelToMove;
+    private int HomeScreenIndex = 0;
     [SerializeField] private int LevelToLoad;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
     }
     
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class ButtonsScript : MonoBehaviour
         HideButton1.SetActive(false);
         HideButton2.SetActive(false);
         HideButton3.SetActive(false);
-        BackButton.SetActive(true);
+        BackButton.gameObject.SetActive(true);
     }
     public void Back()
     {
@@ -45,7 +45,7 @@ public class ButtonsScript : MonoBehaviour
         HideButton2.SetActive(true);
         HideButton3.SetActive(true);
         LevelSelect.SetActive(false);
-        BackButton.SetActive(true);
+        BackButton.gameObject.SetActive(false);
     }
     public void SelectLevel()
     {
@@ -54,7 +54,11 @@ public class ButtonsScript : MonoBehaviour
         HideButton2.SetActive(false);
         HideButton3.SetActive(false);
         LevelSelect.SetActive(true);
-        BackButton.SetActive(true);
+        BackButton.gameObject.SetActive(true);
+    }
+    public void HomeScreen()
+    {
+        SceneManager.LoadScene(HomeScreenIndex);
     }
     public void LoadLevel()
     {
@@ -72,7 +76,7 @@ public class ButtonsScript : MonoBehaviour
         }
         else 
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(HomeScreenIndex);
         }
     }
 }

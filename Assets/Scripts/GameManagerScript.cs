@@ -21,6 +21,8 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DisplayLifes;
     [SerializeField] private int FPS;
     [SerializeField] private GameObject CompletedLevelUI;
+    [SerializeField] private GameObject NotCompletedLevelUI;
+    [SerializeField] private GameObject HomeButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +31,9 @@ public class GameManagerScript : MonoBehaviour
         TimeFail = false;
         DisplayTime.gameObject.SetActive(true);
         GameOverText.gameObject.SetActive(false);
+        CompletedLevelUI.gameObject.SetActive(false);
+        HomeButton.gameObject.SetActive(false);
+        NotCompletedLevelUI.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,6 +50,8 @@ public class GameManagerScript : MonoBehaviour
                 TextString = "Mission Complete " + "\n Time Taken " + Finaltime;
                 GameOverText.text = TextString;
                 GameOverText.gameObject.SetActive(true);
+                HomeButton.gameObject.SetActive(true);
+
             }
             
         }
@@ -64,12 +71,15 @@ public class GameManagerScript : MonoBehaviour
             Player.TimeFail = TimeFail;
             TextString = "Mission Failed";
             GameOverText.text = TextString;
+            HomeButton.gameObject.SetActive(true);
             GameOverText.gameObject.SetActive(true);
+            NotCompletedLevelUI.gameObject.SetActive(true);
         }
 
         if(Completed == true && LandingPad.AnimCompleted == true)
         {
             CompletedLevelUI.SetActive(true);
+            HomeButton.gameObject.SetActive(true);
         }
 
         if(Player.health <= 0)
@@ -77,7 +87,9 @@ public class GameManagerScript : MonoBehaviour
            
             TextString = "Mission Failed";
             GameOverText.text = TextString;
+            HomeButton.gameObject.SetActive(true);
             GameOverText.gameObject.SetActive(true);
+            NotCompletedLevelUI.gameObject.SetActive(true);
         }
         
         

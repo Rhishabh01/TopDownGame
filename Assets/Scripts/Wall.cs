@@ -14,7 +14,7 @@ public class Wall : MonoBehaviour
     void Start()
     {
         Completed = false;
-       
+        AnimCompleted = false;
         player.Completed = Completed;
 
     }
