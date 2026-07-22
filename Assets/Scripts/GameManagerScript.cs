@@ -39,7 +39,7 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DisplayLifes.text = $"Health {Player.health.ToString()} ";
+        DisplayLifes.text = $"Life Left {Player.health.ToString()} ";
 
         if (Completed == true  && TimeFail == false)
         {

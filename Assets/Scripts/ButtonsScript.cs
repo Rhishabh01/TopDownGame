@@ -8,6 +8,7 @@ public class ButtonsScript : MonoBehaviour
     [SerializeField] GameObject HideButton3;
     [SerializeField] GameObject BackButton;
     [SerializeField] GameObject LevelSelect;
+    [SerializeField] GameObject Credits;
     private int LevelToMove;
     private int HomeScreenIndex = 0;
     [SerializeField] private int LevelToLoad;
@@ -37,6 +38,7 @@ public class ButtonsScript : MonoBehaviour
         HideButton1.SetActive(false);
         HideButton2.SetActive(false);
         HideButton3.SetActive(false);
+        Credits.gameObject.SetActive(true);
         BackButton.gameObject.SetActive(true);
     }
     public void Back()
@@ -44,6 +46,7 @@ public class ButtonsScript : MonoBehaviour
         HideButton1.SetActive(true);
         HideButton2.SetActive(true);
         HideButton3.SetActive(true);
+        Credits.gameObject.SetActive(false);
         LevelSelect.SetActive(false);
         BackButton.gameObject.SetActive(false);
     }
